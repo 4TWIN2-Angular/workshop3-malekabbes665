@@ -18,8 +18,19 @@ export class ListuserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.UserService.getUsers().subscribe((users)=>this.list=users)
+    this.getUsers();
+  }
+  getUsers(){
+    this.UserService.getUsers().subscribe((data)=>this.list=data)
+  }
+  deleteUser(id:number){
+    this.UserService.deleteUser(id);
+    this.getUsers();
+  }
+  public SearchHandler(term){
+    console.log(term);
     
+        // this.UserService.searchUserByAccountCategory(term).subscribe((data)=>this.list=data)
   }
 
 }
